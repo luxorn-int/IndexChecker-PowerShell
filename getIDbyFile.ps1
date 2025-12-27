@@ -2,9 +2,9 @@ Get-Process > $null
 
 Write-Output "Begin CHECKING"
 
+# Check file existing
 if (Test-Path -Path testfile.txt) {
     Write-Host "The file exists. Proceeding with operations."
-    # Your commands if the file exists go here
 } else {
     Write-Host "Error: The file does not exist."
     $filePath = "testfile.txt"
@@ -19,7 +19,6 @@ if (Test-Path -Path testfile.txt) {
 
 
 Write-Host "File '$filePath' created with FullControl permissions for Everyone."
-    # Your commands if the file does not exist go here
 }
 
 function GetFileByID() {
@@ -55,4 +54,5 @@ $results = 1..1000 | ForEach-Object -Parallel {
 
     # Call the function
     GetFileByID -ID $_
+
 } -ThrottleLimit 12 # Controls max concurrent threads
